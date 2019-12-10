@@ -15,7 +15,7 @@ pipeline {
         }
 		stage('Start Nodes') {
             steps {
-                bat "docker-compose up --scale chrome=4 --scale firefox=4"
+                bat "docker-compose up chrome firefox"
             }
         }
 		stage('Run Test') {
