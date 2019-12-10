@@ -20,7 +20,7 @@ pipeline {
         }
 		stage('Run Test') {
             steps {
-                bat "docker-compose up bookflight-module_2 duckduck-module_2 --no-color"
+                bat "docker-compose up bookflight-module_1 duckduck-module_1 --no-color"
             }
         }
         stage('Stop Grid') {
