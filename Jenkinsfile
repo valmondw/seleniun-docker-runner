@@ -8,14 +8,19 @@ pipeline {
                 bat "docker pull valmondw/selenium-docker"
             }
         }
-		stage('Start Grid') {
+		stage('Start Hub') {
             steps {
-                bat "docker-compose up -d hub chrome firefox"
+                bat "docker-compose up -d hub"
+            }
+        }
+		stage('Start Nodes') {
+            steps {
+                bat "docker-compose up --scale chrome=4 --scale firefox=4"
             }
         }
 		stage('Run Test') {
             steps {
-                bat "docker-compose up bookflight-module_2 duckduck-module_2"
+                bat "docker-compose up bookflight-module_2 duckduck-module_2 --no-color"
             }
         }
         stage('Stop Grid') {
