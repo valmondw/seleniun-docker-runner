@@ -10,12 +10,7 @@ pipeline {
         }
 		stage('Start Hub') {
             steps {
-                bat "docker-compose up -d hub"
-            }
-        }
-		stage('Start Nodes') {
-            steps {
-                bat "docker-compose up chrome firefox"
+                bat "docker-compose up -d hub chrome firefox"
             }
         }
 		stage('Run Test') {
