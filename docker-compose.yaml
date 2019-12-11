@@ -2,8 +2,6 @@ version: "3"
 services:
   hub:
    image: selenium/hub:3.14
-   ports:
-     - "4444:4444"
   chrome:
    image: selenium/node-chrome:3.14
    depends_on:
@@ -27,7 +25,7 @@ services:
      - HUB_HOST=hub
      - MODULE=bookFlight.xml
    volumes:
-     - /host_mnt/c/DockerStuff/Newtours/bookflightChrome-result/:/usr/share/udemy/test-output
+     - ./output/bookflightChrome-result/:/usr/share/udemy/test-output
   bookflight-module_2:
    image: valmondw/selenium-docker
    depends_on:
@@ -38,7 +36,7 @@ services:
      - HUB_HOST=hub
      - MODULE=bookFlight.xml
    volumes:
-     - /host_mnt/c/DockerStuff/Newtours/bookflightFirefox-result/:/usr/share/udemy/test-output     
+     - /host_mnt/c/DockerStuff/Newtours/output/bookflightFirefox-result/:/usr/share/udemy/test-output     
      
   duckduck-module_1:
    image: valmondw/selenium-docker
@@ -50,7 +48,7 @@ services:
      - HUB_HOST=hub
      - MODULE=duckTestng.xml     
    volumes:
-     - ./duckduckChrome-result/:/usr/share/udemy/test-output  
+     - ./output/duckduckChrome-result/:/usr/share/udemy/test-output  
   duckduck-module_2:
    image: valmondw/selenium-docker
    depends_on:
@@ -61,4 +59,4 @@ services:
      - HUB_HOST=hub
      - MODULE=duckTestng.xml     
    volumes:
-     - ./duckduckFirefox-result/:/usr/share/udemy/test-output   
+     - ./output/duckduckFirefox-result/:/usr/share/udemy/test-output   

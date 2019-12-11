@@ -18,9 +18,10 @@ pipeline {
                 bat "docker-compose up bookflight-module_1 bookflight-module_2"
             }
         }
-        stage('Stop Grid') {
-            steps {
-                bat "docker-compose down"
+    post{
+         always{
+		     archiveArtifacts artifacts: 'output/**'
+             bat "docker-compose down"
             }
         }
     }
