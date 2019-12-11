@@ -18,11 +18,11 @@ pipeline {
                 bat "docker-compose up bookflight-module_1 bookflight-module_2"
             }
         }
+	}	
     post{
          always{
 		     archiveArtifacts artifacts: 'output/**'
              bat "docker-compose down"
             }
-        }
-    }
+    }    
 }
